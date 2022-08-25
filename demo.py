@@ -123,7 +123,7 @@ from functools import partial
 
 # Main tkinter window
 x = Tk()
-x.geometry("400x300")
+x.geometry("1000x700")
 x.title("Wikipedia")
 
 label1 = Label(x, text="Wikipedia", foreground="black", font=('bold', 26))
@@ -139,14 +139,53 @@ b.place(rely=0.1, relheight=0.9, relwidth=0.1)
 # separator.place(relx=0.47, rely=0, relwidth=0.2, relheight=1)
 # separator.grid(row=0, column=0, pady=20)
 
+windows = dict()
+def crete(name):
+    some = Toplevel(x)
+    some.geometry("500x500")
+    # with open(name, 'r') as f:
+    #     print(f.read())
+    #     st = f.read()
+    #     test = Entry(some)
+    #     test.grid(row=0, column=1, sticky=W)
+    #     test.insert(0,"st")
+        
+    menubar = Menu(some)
+        
+    my_font1=('Times',12,'bold')
+    menu_f = Menu(menubar,title='my title',tearoff=0) # file
+
+    menubar.add_cascade(label="File", menu=menu_f) # Top Line
+
+    menu_f.add_command(label="Save")
+    menu_f.add_command(label="Save As..")
+    menu_f.add_command(label="Close and Discard")
+    some.config(menu=menubar)
+    
+    some.title(name)    # update the GUI title 
+    fob=open(name,'r') # open in read more 
+    my_str1=fob.read() # read data from file
+    t1 = Text(some,  height=15, width=45) # added one text box
+    t1.grid(row=1,column=1,padx=30,pady=20)
+    t1.delete('1.0',END) # remove the previous content 
+    t1.insert(END, my_str1) # add new data from file to text box
+    fob.close()
+
+    # Entry(some, textvariable=StringVar()).grid(row=0, column=0).insert(0,"st")
+    # Text(some, height = 5, width = 52).grid(row=0, column=1, sticky=W).insert(0,"st")
+    # something
+    # part_entry.insert(0, "st")
+
+    # pass
 def func(pr):
-    print(pr)
+    # print(pr)
     index=1
     for filename in os.listdir(directory):
         f = os.path.join(directory, filename)
         if os.path.isfile(f):
             print(f)
-            Button(b, text='Part Name4', font=('bold', 8)).grid(row=index, column=0, sticky=W)
+            # Button(b, text='Part Name4', font=('bold', 8), command=partial(crete, "arg")).grid(row=0, column=2, sticky=W)
+            Button(b, text='Part Name4', font=('bold', 8), command=partial(crete, f)).grid(row=index, column=0, sticky=W)
             index+=1
         else:
             print("something wrong")
@@ -169,13 +208,21 @@ part_entry.grid(row=0, column=1)
 
 # configfile = Text(f3, wrap=WORD, width=45, height= 20)
 # something = Text(a, height = 5, width = 52).grid(row=0, column=1, sticky=W)
-with open("./articles/1.txt", 'r') as f:
-    print(f.read())
-    st = f.read()
-    # something.insert(0,"st")
-    part_entry.insert(0, "st")
-
+# with open("./articles/1.txt", 'r') as f:
+#     print(f.read())
+#     st = f.read()
+#     # something.insert(0,"st")
+#     part_entry.insert(0, "st")
+# some = Toplevel(x)
+# some.geometry("500x500")
+    # with open("./articles/1.txt", 'r') as f:
+    #     print(f.read())
+    #     st = f.read()
+# test = Text(some, height = 5, width = 52)
+# test.grid(row=0, column=1, sticky=W)
+# test.insert(INSERT,"st")
 func("outside")
+# crete()
 mainloop()
 
 # import required module
