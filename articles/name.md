@@ -1,14 +1,19 @@
-1st File
+# 1st File
+## 1st File
+### 1st File
 
-1st File
+[Youtub](https://youtube.com)
+***This website aims to build a basic ECommerce solution for all booklovers.***
+The website uses React on the frontend and NodeJS and Express in the backend. MongoDB was chosen as the database of choice.
 
-1st File
+-  BookModel 
+    -  Hello There    
 
-Youtub This website aims to build a basic E-Commerce solution for all book-lovers. The website uses React on the frontend and NodeJS and Express in the backend. MongoDB was chosen as the database of choice.
+There are 2 schemas defined for the data in MongoDB:
+-  BookModel 
+    -  Hello There    
+-  UserModel
 
-	1.	BookModel
-
-There are 2 schemas defined for the data in MongoDB: 1. BookModel 2. UserModel
-
-The routes defined in the project are also divided in 2 parts: 1. BookRouter 2. UserRout
-
+The routes defined in the project are also divided in 2 parts:
+-  BookRouter
+-  UserRouter

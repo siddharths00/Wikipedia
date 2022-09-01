@@ -24,15 +24,36 @@ def markdown(markdown):
     replacement = r'<h1>\1</h1>'
     html = re.sub(pattern, replacement, html)
     
+    pattern = r'( +)- (.*)\n'
+    replacement = r'<ul><li><ul><li>\2</li></ul></li></ul>'
+    html = re.sub(pattern, replacement, html)
+    
     pattern = r'- (.*)\n'
     replacement = r'<ul><li>\1</li></ul>'
+    html = re.sub(pattern, replacement, html)
+    
+#     <li>Tea
+#     <ul>
+#       <li>Black tea</li>
+#       <li>Green tea</li>
+#     </ul>
+#   </li>
+
+# <li>Tea</li></ul>
+#     <ul>
+#       <li>Black tea</li>
+#       <li>Green tea</li>
+#     </ul>
+#   </li>
+    pattern = r'</li></ul><ul><li><ul><li>'
+    replacement = r'<ul><li>'
+    html = re.sub(pattern, replacement, html)
+    
+    pattern = r'</li></ul><ul><li>'
+    replacement = r'</li><li>'
     html = re.sub(pattern, replacement, html)
     
     pattern = r'\n'
     replacement = r'<br>'
     html = re.sub(pattern, replacement, html)
-    
-    # phoneNumRegex = re.compile(pattern)
-    # mo = phoneNumRegex.search(html)
-    # print(mo.groups())
     return html

@@ -27,6 +27,9 @@ class Frame:
         
         for index, weight in columnconfigure:
             self.frame.columnconfigure(index=index,weight=weight)
+        
+        # (self.frame).canvas.configure(scrollregion=self.canvas.bbox("all"))
+
     
     def getMaster(self):
         return self.frame

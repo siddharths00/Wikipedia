@@ -4,13 +4,15 @@ from pyexpat import features
 import tkinter as tk
 from xml.sax.handler import feature_external_ges
 import numpy as np
-
+from tkinter import ttk
+# import tk;
 from fileinput import filename
 import os
 from myMarkdown import markdown
 from tkhtmlview import HTMLLabel
 from frame import Frame
 from bs4 import BeautifulSoup
+from functools import partial
 
 filename = "./articles/1.md"
 
@@ -31,7 +33,7 @@ def modified(e,text,mylabel):
     text.edit_modified(0)
 
 
-def display():
+def display(filename):
     fileobj = open(filename,'r')
     textMarkdown = fileobj.read();
     htmlText = markdown(textMarkdown)
@@ -80,9 +82,11 @@ root.geometry("800x600")
 
 ############################################################################
 
-leftFrame = Frame(root, 0, 0, "green", rowconfigure=[(0,1), (1,20)], columnconfigure=[(0,1)])
+# leftFrame = Frame(root, 0, 0, "green", rowconfigure=[(0,1), (1,20)], columnconfigure=[(0,1)])
+leftFrame = Frame(root, 0, 0, rowconfigure=[(0,1), (1,20)], columnconfigure=[(0,1)])
 
-createFrame = Frame(leftFrame.getMaster(), 0, 0, "pink")
+# createFrame = Frame(leftFrame.getMaster(), 0, 0, "pink")
+createFrame = Frame(leftFrame.getMaster(), 0, 0)
 
 createButton = tk.Button(createFrame.getMaster(),text="Create Page")
 createButton.grid(row=0,column=0)
@@ -92,7 +96,8 @@ createButton.grid(row=0,column=0)
 
 #############################################################################
 
-rightFrame = Frame(root, 0, 1, "green", rowconfigure=[(0,1)], columnconfigure=[(0,1)])
+# rightFrame = Frame(root, 0, 1, "green", rowconfigure=[(0,1)], columnconfigure=[(0,1)])
+rightFrame = Frame(root, 0, 1, rowconfigure=[(0,1)], columnconfigure=[(0,1)])
 
 createMainWindow = Frame(rightFrame.getMaster(), 0, 0, rowconfigure=[(0,1)], columnconfigure=[(0,1),(1,1)])
 
@@ -116,8 +121,11 @@ cancelButton.grid(row=1,column=1)
 displayMainFrame = Frame(rightFrame.getMaster(), 0, 0, rowconfigure=[(1,1)], columnconfigure=[(0,1)])
 
 
-displayFrame = HTMLLabel(displayMainFrame.getMaster(),html="",background="brown")
+displayFrame = HTMLLabel(displayMainFrame.getMaster(),html="",background="teal")
 displayFrame.grid(row=1,column=0,sticky="NEWS")
+
+scroll_bar = tk.Scrollbar(displayMainFrame.getMaster())
+scroll_bar.grid(row=1, column=1)
 
 createButton.bind("<Button-1>",lambda e: raiseit(e,createMainWindow.getMaster()))
 saveButton.bind("<Button-1>",lambda e: saveit(e,createTextFrame))
@@ -128,7 +136,20 @@ saveButton.grid(row=1,column=0)
 editButton = tk.Button(displayMainFrame.getMaster(),text="Edit")
 editButton.bind("<Button-1>",lambda e: editPressed(e))
 editButton.grid(row=0,column=0)
-display()
+
+index=0
+for filename in os.listdir(directory):
+    f = os.path.join(directory, filename)
+    if os.path.isfile(f):
+        print(f)
+        # Button(b, text='Part Name4', font=('bold', 8), command=partial(crete, "arg")).grid(row=0, column=2, sticky=W)
+        tk.Button(leftFrame.getMaster(), text=filename, font=('bold', 8), command=partial(display, f)).grid(row=index, column=0, sticky="S")
+        index+=1
+    else:
+        print("something wrong")
+
+
+# display()
 
 
 
