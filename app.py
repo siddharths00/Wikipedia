@@ -3,7 +3,7 @@ import customtkinter as ctk
 import createClass
 import leftFrameClass
 import displayClass
-import demoTest
+
 ctk.set_appearance_mode("dark")  # Modes: system (default), light, dark
 ctk.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
 
@@ -14,8 +14,6 @@ root.geometry("850x400")
 leftFrame = leftFrameClass.leftFrameWindow(root)
 #createFunc = createClass.createWindow(root)
 displayFunc = displayClass.displayWindow(root,"wikipedia")
-
-#demo = demoTest.demoClass(root)
 
 
 root.rowconfigure(0,weight=1)
