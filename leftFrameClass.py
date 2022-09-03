@@ -3,6 +3,7 @@ import customtkinter as ctk
 import createClass
 import os
 import displayClass
+from tkinter.messagebox import showinfo
 from functools import partial
 class leftFrameWindow:
     directory = "./articles"
@@ -22,15 +23,33 @@ class leftFrameWindow:
         self.bottomFrame = ctk.CTkFrame(self.leftFrame)
         self.bottomFrame.grid(row=1,column=0,sticky="NEWS",padx=5,pady=5)
         self.bottomFrame.columnconfigure(0,weight=1)
+        self.bottomFrame.rowconfigure(0,weight=1)
         
         self.files=os.listdir(self.directory)
+        listbox = tk.Listbox(self.bottomFrame,font=('Helveticabold 13'),fg="blue",bg="white", cursor="hand2")
+
+
+        listbox.grid(row=0,column=0,columnspan=2,sticky="news")
+        listboxscrollbar = ctk.CTkScrollbar(self.bottomFrame, command=listbox.yview)
+        listboxscrollbar.grid(row=0,column=1, sticky="news")
+        listbox.configure(yscrollcommand=listboxscrollbar.set)
+
         self.index=0
         for file in self.files:
             self.justname = file.split(".")
-            self.button= ctk.CTkButton(self.bottomFrame,text = file,bg_color="#262626",fg_color= "#262626",command=partial(displayClass.displayWindow, self.root, self.justname[0]))
-            self.button.grid(row=self.index,column=0,pady=5,sticky="EW")
+            listbox.insert(self.index,self.justname[0])
             self.index = self.index+1
+        listbox.bind('<<ListboxSelect>>',lambda e:self.items_selected(e,listbox))
         
+    def items_selected(self,e,listbox):
+        selected_indices = listbox.curselection()
+        selected_file = ",".join([listbox.get(i) for i in selected_indices])
+        displayClass.displayWindow(self.root,selected_file)
+        msg = f'You have selected: {selected_file}'
+
+        showinfo(
+            title='Information',
+            message=msg) 
 
     def displayTheFile(self,e,filename):
         self.transfername = filename
