@@ -87,6 +87,7 @@ class createWindow:
                 messagebox.showinfo("info","File saved successfully")
                 self.filename = self.title
                 self.obj = displayClass.displayWindow(self.root,self.filename)
+                self.newobj = leftFrameClass.leftFrameWindow(self.root)
 
 
 
