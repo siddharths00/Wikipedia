@@ -12,7 +12,6 @@ root = ctk.CTk()
 root.geometry("850x400")
 
 leftFrame = leftFrameClass.leftFrameWindow(root)
-#createFunc = createClass.createWindow(root)
 displayFunc = displayClass.displayWindow(root,"wikipedia")
 
 

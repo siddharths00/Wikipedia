@@ -8,7 +8,7 @@ import numpy as np
 from fileinput import filename
 import os
 import markdown
-from tkhtmlview import HTMLLabel
+from __init__ import *
 
 from bs4 import BeautifulSoup
 
@@ -28,7 +28,6 @@ class Frame:
         for index, weight in columnconfigure:
             self.frame.columnconfigure(index=index,weight=weight)
         
-        # (self.frame).canvas.configure(scrollregion=self.canvas.bbox("all"))
 
     
     def getMaster(self):

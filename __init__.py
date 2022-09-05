@@ -37,11 +37,12 @@ class HTMLScrolledText(_ScrolledText):
     """
     HTML scrolled text widget
     """
-    def __init__(self, *args, html=None, **kwargs):
+    def __init__(self, *args, html=None, fobj=None,**kwargs):
         #------------------------------------------------------------------------------------------
         super().__init__(*args, **kwargs)
+        self.fobj=fobj
         self._w_init(kwargs)
-        self.html_parser = html_parser.HTMLTextParser()
+        self.html_parser = html_parser.HTMLTextParser(fobj)
         if isinstance(html, str):
             self.set_html(html)
 
@@ -71,13 +72,12 @@ class HTMLScrolledText(_ScrolledText):
             self.config(height=0.5+3/self.yview()[1])
 
 
-    def set_html(self, html,strip=True):
+    def set_html(self, html, strip=True):
         #------------------------------------------------------------------------------------------
         """
         Set HTML widget text. If strip is enabled (default) it ignores spaces and new lines.
 
         """
-        # print(root,"))))))))))))))))))))")
         prev_state = self.cget('state')
         self.config(state=tk.NORMAL)
         self.delete('1.0', tk.END)
@@ -107,7 +107,8 @@ class HTMLLabel(HTMLText):
     """
     HTML label widget
     """
-    def _w_init(self, kwargs):
+    def _w_init(self, kwargs,fobj=None):
+        self.fobj=fobj
         #------------------------------------------------------------------------------------------
         super()._w_init(kwargs)
         if not 'background' in kwargs.keys():
@@ -122,7 +123,7 @@ class HTMLLabel(HTMLText):
         if not 'padx' in kwargs.keys():
             self.config(padx=3)
         
-    def set_html(self, *args, **kwargs):
+    def set_html(self,*args, **kwargs):
         #------------------------------------------------------------------------------------------
         super().set_html(*args, **kwargs)
         self.config(state=tk.DISABLED)

@@ -1,3 +1,11 @@
+"""
+LeftFrameClass
+===============
+Left frame class handles the left part of the screen which contains
+create and lists of all available files of wikipedia.
+
+"""
+
 import tkinter as tk
 import customtkinter as ctk
 import createClass
@@ -7,6 +15,9 @@ from tkinter.messagebox import showinfo
 from functools import partial
 class leftFrameWindow:
     directory = "./articles"
+    """
+    This is globally declared directory which has all the files.
+    """
     def __init__(self,root) :
         self.root = root
         self.leftFrame = ctk.CTkFrame(self.root)
@@ -42,17 +53,31 @@ class leftFrameWindow:
         listbox.bind('<<ListboxSelect>>',lambda e:self.items_selected(e,listbox))
         
     def items_selected(self,e,listbox):
+        """
+        This function takes the input as the listbox widget which is list of all the files in the article folder.
+        Displays the file when a particular link is clicked.
+        :Input:
+              :listbox: listbox which contains all the files in articles folder
+        """
         selected_indices = listbox.curselection()
+        if selected_indices==():
+            return
         selected_file = ",".join([listbox.get(i) for i in selected_indices])
         displayClass.displayWindow(self.root,selected_file)
-        msg = f'You have selected: {selected_file}'
-
-        showinfo(
-            title='Information',
-            message=msg) 
 
     def displayTheFile(self,e,filename):
+        """
+        This function display the file when a particular link is clicked.
+        It takes as input the name of the file to be displayed.
+        :Input:
+              :filename: name of the file to be displayed
+              :type of filename: string
+        """
         self.transfername = filename
         self.fileobj = displayClass.displayWindow(self.root,self.transfername)
+
     def createNewFile(self):
+        """
+        This function gets called whenever we want to create a new file.
+        """
         self.obj = createClass.createWindow(self.root,"")

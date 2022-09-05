@@ -1,6 +1,22 @@
+"""
+Markdown Function
+=================
+This is the Markdown parser which takes in input as string and returns the 
+HTML text to be given to Markdown parser.
+
+"""
+
 import re
 
 def markdown(markdown):
+    """
+    This takes as parameters
+
+    :Input:
+          :markdown: markdown text to be parsed
+    :Returns:
+          :the html text
+    """
     pattern = r'\*\*(.*?)\*\*'
     replacement = r'<b>\1</b>'
     html = re.sub(pattern, replacement, markdown)
@@ -8,8 +24,6 @@ def markdown(markdown):
     pattern = r'\*(.*?)\*'
     replacement = r'<i>\1</i>'
     html = re.sub(pattern, replacement, html)
-
-    # markdown = "[I'm an inline-style link](https://www.google.com)";
     html = re.sub(r'\[([^\]]+)\]\(([^\)]+)\)', r'<a href="\2">\1</a>', html);
 
     pattern = r'\### (.*)'
@@ -32,19 +46,6 @@ def markdown(markdown):
     replacement = r'<ul><li>\1</li></ul>'
     html = re.sub(pattern, replacement, html)
     
-#     <li>Tea
-#     <ul>
-#       <li>Black tea</li>
-#       <li>Green tea</li>
-#     </ul>
-#   </li>
-
-# <li>Tea</li></ul>
-#     <ul>
-#       <li>Black tea</li>
-#       <li>Green tea</li>
-#     </ul>
-#   </li>
     pattern = r'</li></ul><ul><li><ul><li>'
     replacement = r'<ul><li>'
     html = re.sub(pattern, replacement, html)

@@ -11,9 +11,10 @@ from html.parser import HTMLParser
 from collections import OrderedDict
 import requests
 from io import BytesIO
-import displayClass
-# from app import root
-# from app import displayFunc
+from myMarkdown import markdown
+
+#__________________________________________________________________________________________________
+
 #__________________________________________________________________________________________________
 class Defs():
     DEFAULT_TEXT_FONT_FAMILY = ("Segoe ui", "Calibri", "Helvetica", "TkTextFont")
@@ -188,26 +189,19 @@ def get_existing_font(font_families):
 class HLinkSlot():
     #----------------------------------------------------------------------------------------------
 
-    def __init__(self, w, tag_name, url):
+    def __init__(self, w, tag_name, url,fobj=None):
         #------------------------------------------------------------------------------------------
         self._w = w
         self.tag_name = tag_name
         self.URL = url
+        self.fobj=fobj
 
     def call(self, event):
         #------------------------------------------------------------------------------------------
-        # webbrowser.open(self.URL)
-        print("hello there", self.URL)
-        filepath = './articles/2.txt'
-        file = open(filepath,'r')
-        textToHtml = file.read()
-        # text = markdown(self.textToHtml)
-        # previewText.set_html(self.text, root=self.root)
-        print(textToHtml)
-        file.close()
-        # temp = displayClass.displayWindow(root,'2')
-        # displayFunc.filename='2'
-        # displayClass.displayWindow(root,"wikipedia")
+        self.fobj.filename=self.URL
+        self.fobj.setTitle(self.URL)
+        self.fobj.getData()
+
         self._w.tag_config(self.tag_name, foreground="purple")
 
     def enter(self, event):
@@ -260,7 +254,8 @@ class ListTag():
 class HTMLTextParser(HTMLParser):
     #----------------------------------------------------------------------------------------------
 
-    def __init__(self):
+    def __init__(self,fobj=None):
+        self.fobj=fobj
         #------------------------------------------------------------------------------------------
         super().__init__()
         # set list tabs
@@ -368,9 +363,9 @@ class HTMLTextParser(HTMLParser):
         else:
             self._stack_add(tag, WCfg.FOREGROUND)
 
-        #---------------------------------------------------------------------- [ BACKGROUD_COLOR ]
+        #---------------------------------------------------------------------- [ BACKGROUND_COLOR ]
         if HTML.Style.BACKGROUND_COLOR in attrs[HTML.Attrs.STYLE].keys():
-            self._stack_add(tag, WCfg.BACKGROUND, attrs[HTML.Attrs.STYLE][HTML.Style.BACKGROUD_COLOR])
+            self._stack_add(tag, WCfg.BACKGROUND, attrs[HTML.Attrs.STYLE][HTML.Style.BACKGROUND_COLOR])
         elif tag == HTML.Tag.MARK:
             self._stack_add(tag, WCfg.BACKGROUND, "yellow")
         else:
@@ -692,15 +687,15 @@ class HTMLTextParser(HTMLParser):
             self._w.tag_add(key, tag[WTag.START_INDEX], tag[WTag.END_INDEX])
             self._w.tag_config(key, font=font.Font(**tag[Fnt.KEY]), **tag[WCfg.KEY])
             if tag[Bind.KEY][Bind.LINK]:
-                self.hlink_slots.append(HLinkSlot(self._w, key, tag[Bind.KEY][Bind.LINK]))
+                self.hlink_slots.append(HLinkSlot(self._w, key, tag[Bind.KEY][Bind.LINK],self.fobj))
                 self._w.tag_bind(key, "<Button-1>", self.hlink_slots[-1].call)
                 self._w.tag_bind(key, "<Leave>", self.hlink_slots[-1].leave)
                 self._w.tag_bind(key, "<Enter>", self.hlink_slots[-1].enter)
         
 
     def w_set_html(self, w, html, strip):
+        
         #------------------------------------------------------------------------------------------
-        print("please print")
         self._w = w
         self.stack = deepcopy(DEFAULT_STACK)
         self.stack[WCfg.KEY][WCfg.BACKGROUND].append(("__DEFAULT__", self._w.cget("background")))
