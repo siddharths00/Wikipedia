@@ -7,7 +7,7 @@ Ex: Birds.
 
 Main page: [**All categories**](Wikipedia)
 other categories
-[**Terrestrial Animals**](terrestrial)
-[**Aquatic Animals**](aquatic)
-[**Arboreal Animals**](arboreal)
+[**Terrestrial**](terrestrial) Animals
+[**Aquatic**](aquatic) Animals
+[**Arboreal**](arboreal) Animals
 [**Amphibians**](amphibians)

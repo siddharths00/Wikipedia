@@ -8,7 +8,7 @@ Ex: , salamanders, caecilians, toads , frogs.
 
 Main page: [**All categories**](Wikipedia)
 other categories
-[**Terrestrial Animals**](terrestrial)
-[**Aquatic Animals**](aquatic)
-[**Aerial Animals**](aerial)
-[**Arboreal Animals**](arboreal)
+[**Terrestrial**](terrestrial) Animals
+[**Aquatic**](aquatic) Animals
+[**Aerial**](aerial) Animals
+[**Arboreal**](arboreal) Animals

@@ -1,19 +1,19 @@
 ## Classification of animals on habitat:
 
-[**Terrestrial Animals**](terrestrial)
-[**Aquatic Animals**](aquatic)
-[**Aerial Animals**](aerial)
-[**Arboreal Animals**](arboreal)
+[**Terrestrial**](terrestrial) Animals
+[**Aquatic**](aquatic) Animals
+[**Aerial**](aerial) Animals
+[**Arboreal**](arboreal) Animals
 [**Amphibians**](amphibians)
 
 
-Animals which live on ***land*** are called [**Terrestrial Animals**](terrestrial).
+Animals which live on ***land*** are called [**Terrestrial**](terrestrial) Animals.
 
 
-[**Aquatic Animals**](aquatic) are the ones which live in ***water***.
+[**Aquatic**](aquatic) Animals are the ones which live in ***water***.
 
-Animals which spend most of their time in the ***air*** are called [**Aerial Animals**](aerial)
+Animals which spend most of their time in the ***air*** are called [**Aerial**](aerial) Animals
 
-[**Arboreal Animals**](arboreal) live on ***trees***.
+[**Arboreal**](arboreal) Animals live on ***trees***.
 
 [**Amphibians**](amphibians) can live in ***water*** as well as ***land***.

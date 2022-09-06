@@ -6,7 +6,7 @@ E.g. monkeys, lizards, squirrel, chameleon etc.
 
 Main page: [**All categories**](Wikipedia)
 other categories 
-[**Terrestrial Animals**](terrestrial)
-[**Aquatic Animals**](aquatic)
-[**Aerial Animals**](aerial)
+[**Terrestrial **](terrestrial)Animals
+[**Aquatic **](aquatic)Animals
+[**Aerial **](aerial)Animals
 [**Amphibians**](amphibians)

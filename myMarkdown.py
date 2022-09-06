@@ -24,7 +24,10 @@ def markdown(markdown):
     pattern = r'\*(.*?)\*'
     replacement = r'<i>\1</i>'
     html = re.sub(pattern, replacement, html)
-    html = re.sub(r'\[([^\]]+)\]\(([^\)]+)\)', r'<a href="\2">\1</a>', html);
+    
+    pattern = r'\[([^\]]+)\]\(([^\)]+)\)'
+    replacement = r'<a href="\2">\1</a>'
+    html = re.sub(pattern, replacement, html);
 
     pattern = r'\### (.*)'
     replacement = r'<h3>\1</h3>'
