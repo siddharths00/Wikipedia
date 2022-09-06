@@ -12,9 +12,9 @@ import os
 sys.path.insert(0,os.path.abspath('..'))
 
 
-project = 'root'
-copyright = '2022, root'
-author = 'root'
+project = 'Wikipedia'
+copyright = '2022, Wikipedia'
+author = 'Wikipedia'
 release = '1.0.0'
 
 # -- General configuration ---------------------------------------------------

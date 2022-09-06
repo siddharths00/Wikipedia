@@ -1,8 +1,8 @@
 # Aerial
 
-Aerial animals are the ones which spend most of their time in air
+Aerial animals are the ones which spend most of their time in *air*
 
-Ex: Birds.
+Ex: **Birds**.
 
 
 Main page: [**All categories**](Wikipedia)
