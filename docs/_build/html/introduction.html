@@ -41,9 +41,8 @@
               <p class="caption" role="heading"><span class="caption-text">Intro:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#heading">HEADING:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#references">REFERENCES:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#author">Author:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tools-technologies-used">Tools &amp; Technologies Used:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authors">Authors:</a></li>
 </ul>
 </li>
 </ul>
@@ -81,28 +80,38 @@
              
   <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
-<p>This is simple sphinx documentation example.</p>
-<p>Here, Explain the project objective and features:</p>
+<p>This report is made in reference to the 1st Programming Assignment for the course
+COP 701 - Software Systems Laboratory.</p>
+<p>Our team built a Local markdown editor with wiki like functionality using Python
+and a library which aids in GUI development for desktop applications called
+Custom Tkinter. Each of the articles being dealt with in this application has
+been written in a markdown format. These articles exist in an ‘articles’ folder
+in the root directory. The desktop application allows for the following
+functionalities:</p>
 <ul class="simple">
-<li><p>Write bullet points here.</p></li>
+<li><p>Viewing articles</p></li>
+<li><p>Creating articles</p></li>
+<li><p>Editing articles</p></li>
+<li><p>Removing articles</p></li>
 </ul>
-<section id="heading">
-<h2>HEADING:<a class="headerlink" href="#heading" title="Permalink to this heading"></a></h2>
+<section id="tools-technologies-used">
+<h2>Tools &amp; Technologies Used:<a class="headerlink" href="#tools-technologies-used" title="Permalink to this heading"></a></h2>
+<p>The team chose to develop the application in Python since it is a very user
+friendly language with a gentle learning curve. Python is famous for being open
+source and there are many libraries and modules available at our disposal.</p>
 <ul class="simple">
-<li><p>If necessart mention some points here.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Studio</span></code>:  Visual Studio is an Integrated Development Environment developed by microsoft. The application was developed in this IDE. This IDE comes with very powerful functionalities out of the box. It’s extensions and add ons make it even easier to develop applications in Visual Studio.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tkinter</span> <span class="pre">and</span> <span class="pre">Custom</span> <span class="pre">Tkinter</span></code>:  Tkinter(TK Interface) is a GUI library based on the TK GUI toolkit. It is one of the most common libraries when it comes to creating desktop applications in Python. Custom Tkinter is an advanced version of the same TKinter library which makes it much easier to assign themes and other GUI features to the application widgets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tkhtmlview</span></code>:  The articles that are visible in the application are all written in markdown. There is a need for some kind of processing before the article becomes viewable. We need to first parse the input and then render the HTML as explained before. Parsing of the markdown is done in the myMarkdown module, however the rendering of the articles is managed by this library.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os</span> <span class="pre">Library</span></code>:  Python’s OS library is one of the most powerful since it can directly interact with the operating system of our machine. This OS library was used to read the file data from the articles stored on the local system.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sphinx</span></code>:  It is a very powerful document generator used by developers of Python. It works automatically by reading comments in our local files to make inferences. In the end an HTML file is generated with all the required documentation.</p></li>
 </ul>
 </section>
-<section id="references">
-<h2>REFERENCES:<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.google.com">Google</a> , search engine has been used throughout the project.</p></li>
-<li><p>Other kind of text <code class="docutils literal notranslate"><span class="pre">Bold</span> <span class="pre">reference</span></code>.</p></li>
-<li><p>Bold <strong>letters</strong>.</p></li>
-</ul>
-</section>
-<section id="author">
-<h2>Author:<a class="headerlink" href="#author" title="Permalink to this heading"></a></h2>
-<p>Author name and details.</p>
+<section id="authors">
+<h2>Authors:<a class="headerlink" href="#authors" title="Permalink to this heading"></a></h2>
+<p>Tarun Kumar Sharma
+Ruptirumal Sai Bodavula
+Siddharth S</p>
 </section>
 </section>
 
